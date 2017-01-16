@@ -6,35 +6,6 @@
 import imagematrix
 import copy
 
-"""
-For each image, I did 3 time runs with naive and dynamic programming
-Results of timing each:
-10x10 image:
-Naive: .390s,.398s,.388s
-DP: .027s,.028s,.028s
-15x10 image:
-Naive: .646s,.664s,.655s
-DP: .28s,.27s,.28s
-sunset_small:
-Naive: took more than 15 minutes, canceled the execution of program
-DP: .122s,.123s,.122s
-
-Analysis:
-    These results make sense based on the complexity of each algorithm. In the case of naive, you can see that
-the more rows you add to the image, the longer it takes. For example, on the sunset small, there are 63 rows,
-with a dfs branching factor of 3, that would be 3^63, which ends up being an extremely large number. For this reason
-I was not even able to finish the test on the naive algorithm for the sunset small picture. DFS will only
-complete in a short period of time with very tiny images, and even then it does not compare to the speed of DP.
-
-Naive complexity: O(2^n)
-
-    The DP results make sense as well. The DP algorithm is not exponential. If it was, we would see a big leap in time from each
-image to the next. These results make sense, as the time increases slightly based on the width and height of the image.
-
-DP complexity: O(n)
-"""
-
-
 class ResizeableImage(imagematrix.ImageMatrix):
 
     # energy  for each x,y in image
@@ -44,10 +15,6 @@ class ResizeableImage(imagematrix.ImageMatrix):
     # lowest path for dfs
     lowestPath = []
 
-
-    """
-    Complexity of DFS: branching factor b to the no of levels i (b^i)
-    """
     # depth first search function for naive approach 
     def dfs(self,i,j,diction,path,energy):
         # append i,j (x,y) to the path
@@ -124,12 +91,7 @@ class ResizeableImage(imagematrix.ImageMatrix):
             # return the lowest path
             return(self.lowestPath)
 
-        """
-        Dynamic Programming complexity: the complexity of the DP algorith is
-        the amount # of states it has to consider. Each for loop has to do with width by height (w,h).
-        So the total amount of time it takes is directly connected to the w and h of the image.
-        (w*h)
-        """
+
         if(dp == True):
 
             # minimum x, y
