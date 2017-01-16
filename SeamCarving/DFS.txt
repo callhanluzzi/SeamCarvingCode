@@ -1,0 +1,36 @@
+path = []
+            path.append(start)
+            q=neighbors[(0,0)]
+            l = 1
+
+
+            
+            while q != 0:
+                for g in range(len(neighbors)):
+                    
+                    for i in range(len(q)):
+                        
+                        v = q[i]#pop()
+                        print(v)
+                        #del(q[0])
+                        if(v not in path and v[1] != h):
+                            path.append(v)
+                            q = neighbors[v]
+                        elif(v not in path and v[1] == h):
+                            path.append(v)
+                            q = neighbors[(l,0)]
+                            
+        
+                            pathList.append(path)
+                            path = []
+                            path.append((l,0))
+
+                            l = l + 1
+                        if(v == (w-1,h-1)):
+                            q = 0
+                        print pathList
+                    
+                    
+                    
+            print path
+            return path
